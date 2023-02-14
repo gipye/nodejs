@@ -1,10 +1,8 @@
 "use strict";
 
 // const user
-const users = {
-	id: ["admin", "gipyong"],
-	password: ["admin1234", "1234"],
-};
+const UserStorage = require("../../models/UserStorage.js");
+const users = UserStorage.getUsers(["id", "password"]);
 
 // make function
 const homeController = (req, res) => {
