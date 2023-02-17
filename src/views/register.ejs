@@ -5,17 +5,18 @@
     <meta name="viewprot" content="sith=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/login.css">
-	<script src="/js/login.js" defer></script>
+	<script src="/js/register.js" defer></script>
     <title>Document</title>
   </head>
   <body>
   <div class="login-page">
   <div class="form">
-    <form class="login-form">
-      <input id="id" type="text" placeholder="username"/>
+    <form class="register-form">
+      <input id="id" type="text" placeholder="name"/>
       <input id="password" type="password" placeholder="password"/>
-      <button id="loginBtn">login</button>
-      <p class="message">Not registered? <a href="/register">Create an account</a></p>
+      <input id="email" type="text" placeholder="email address"/>
+      <button id="registerBtn">create</button>
+      <p class="message">Already registered? <a href="/login">Sign In</a></p>
     </form>
   </div>
 </div>
