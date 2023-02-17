@@ -1,8 +1,11 @@
 "use strict";
 
 // const user
-const UserStorage = require("../../models/UserStorage.js");
-const users = UserStorage.getUsers(["id", "password"]);
+// const UserStorage = require("../../models/UserStorage.js");
+const User = require("../../models/User.js");
+
+// User database
+// const users = UserStorage.getUsers(["id", "password"]);
 
 // make function
 const homeController = (req, res) => {
@@ -14,6 +17,13 @@ const loginController = (req, res) => {
 };
 
 const loginProcessing = (req, res) => {
+
+    const user = new User(req.body);
+    const response = user.login();
+
+    return res.json(response);
+/* 이전 방식
+
 // req 변수는 src/public/js/login.js 파일에서 fetch() 함수의
 // 두 번째 인자로 설정한 옵션에 따른 req 객체
 	const id = req.body.id,
@@ -34,6 +44,8 @@ const loginProcessing = (req, res) => {
 		success: false,
 		msg: "login fail",
 	});
+
+*/// 여까지 이전 방식
 };
 
 
