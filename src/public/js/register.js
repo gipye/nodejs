@@ -1,14 +1,25 @@
 "use strict";
 
 const id = document.querySelector("#id"),
-    password = document.querySelector("#password"),
-//    email = document.querySelector("#email");
-    registerBtn = document.querySelector("#registerBtn");
+      name = document.querySelector("#name"),
+      password = document.querySelector("#password"),
+      confirmPassword = document.querySelector("#confirm-password"),
+      email = document.querySelector("#email"),
+      registerBtn = document.querySelector("#button");
 
 function register() {
+    if(!id.value)
+        return alert("input id");
+    else if(!password.value)
+        return alert("input password");
+    else if(password.value !== confirmPassword.value)
+        return alert("password confirm diffrent");
+
 	const req = {
 		id: id.value,
+        name: name.value,
 		password: password.value,
+        email: email.value,
 	};
 
 	fetch("/register", {

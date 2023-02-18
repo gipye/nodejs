@@ -18,6 +18,22 @@ class User {
         }
         return { success: false, msg: "not exist id" };
     }
+
+    register() {
+        const user = {
+            id: this.body.id,
+            password: this.body.password,
+            name: this.body.name,
+            email: this.body.email,
+        }
+
+        if(UserStorage.getUsers().id.includes(user.id)) {
+            return { success: false, msg: "id already exist" };
+        }
+
+        UserStorage.registerUser(user);
+        return { success: true };
+    }
 }
 
 module.exports = User;

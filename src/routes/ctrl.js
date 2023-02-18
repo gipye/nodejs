@@ -29,8 +29,10 @@ const loginProcessing = (req, res) => {
 };
 
 const registerProcessing = (req, res) => {
-    //...
-    return res.json({ success: "false", msg: "yet incomplete" });
+    const user = new User(req.body);
+    const response = user.register();
+
+    return res.json(response);
 }
 
 

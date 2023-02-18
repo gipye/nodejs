@@ -3,7 +3,9 @@
 class UserStorage {
     static #users = {
         id: ["admin", "gipyong"],
+        name: ["admin", "gipyong"],
         password: ["admin1234", "1234"],
+        email: ["admin@a.com", "gipyong@a.com"],
     };
 
     static getUsers(property) {
@@ -44,6 +46,15 @@ class UserStorage {
         } else {
             return {};
         }
+    }
+
+    static registerUser(user) {
+        const users = this.#users;
+
+        users.id.push(user.id);
+        users.name.push(user.name);
+        users.password.push(user.password);
+        users.email.push(user.email);
     }
 }
 
