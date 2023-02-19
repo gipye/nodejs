@@ -1,15 +1,12 @@
 "use strict";
 
+const fs = require("fs");
+
 class UserStorage {
-    static #users = {
-        id: ["admin", "gipyong"],
-        name: ["admin", "gipyong"],
-        password: ["admin1234", "1234"],
-        email: ["admin@a.com", "gipyong@a.com"],
-    };
+    static userTableFilePath = "./src/databases/usertable.json";
 
     static getUsers(property) {
-        const users = this.#users;
+        const users = JSON.parse(fs.readFileSync(this.userTableFilePath));
         const temp = {};
         let i = 0;
 
@@ -30,7 +27,7 @@ class UserStorage {
     }
 
     static getUserInfo(id) {
-        const users = this.#users;
+        const users = this.getUsers();
         
         if(users.id.includes(id)) {
             const userInfo = {};
@@ -49,12 +46,14 @@ class UserStorage {
     }
 
     static registerUser(user) {
-        const users = this.#users;
+        const users = this.getUsers();
 
         users.id.push(user.id);
         users.name.push(user.name);
         users.password.push(user.password);
         users.email.push(user.email);
+
+        fs.writeFileSync(this.userTableFilePath, JSON.stringify(users));
     }
 }
 
